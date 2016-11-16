@@ -3,3 +3,5 @@
 /vendor
 /privkey.pem
 /cert.pem
+*.mhtml
+/docs
