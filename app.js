@@ -8,6 +8,17 @@ let options = {
 };
 
 spdy.createServer(options, function(req, res) {
+	let stream = res
+        .push('/main.js', {
+            request: {
+                accept: '*/\*'
+            },
+            response: {
+                'content-type': 'application/javascript'
+            }
+        })
+        .end('console.log("Hello World");');
+    
     res.writeHead(200);
-    res.end('Hello world over HTTP/2');
+    res.end('<script src="/main.js"></script>');
 }).listen(3000);
